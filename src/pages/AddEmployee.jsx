@@ -29,10 +29,9 @@ const AddEmployee = ({ onAddEmployee }) => {
     e.preventDefault();
     const newEmployee = {
       ...formData,
-      id: Date.now(),
-      skills: formData.skills.split(","),
+      skills: formData.skills.split(",").map(skill => skill.trim()), // trim whitespace
     };
-    onAddEmployee(newEmployee);
+    onAddEmployee(newEmployee);    
     navigate("/"); // Navigate back to the employee list
   };
 

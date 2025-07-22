@@ -1,19 +1,31 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
-import { employees as initialEmployees } from "./data/employeedata"; // Initial data
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import Root from "./pages/Root";
-import About from "./pages/Aboutpage"; 
-import PersonList from "./pages/PersonList"; 
+import About from "./pages/Aboutpage";
+import PersonList from "./pages/PersonList";
 import AddEmployee from "./pages/AddEmployee";
 
 const App = () => {
-  const [employees, setEmployees] = useState(initialEmployees);
+  const [employees, setEmployees] = useState([]);
 
+  // Fetch employee data on component mount
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/employees")
+      .then((res) => setEmployees(res.data))
+      .catch((err) => console.error("Error fetching employees:", err));
+  }, []);
+
+  // Add new employee to the server and update local state
   const addEmployeeHandler = (newEmployee) => {
-    setEmployees((prev) => [
-      ...prev,
-      { ...newEmployee, id: Date.now() },
-    ]);
+    axios
+      .post("http://localhost:3001/employees", newEmployee)
+      .then((res) => {
+        setEmployees((prev) => [...prev, res.data]);
+      })
+      .catch((err) => console.error("Error adding employee:", err));
   };
 
   const router = createBrowserRouter([
@@ -41,6 +53,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
