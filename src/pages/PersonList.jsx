@@ -1,6 +1,12 @@
 import PersonCard from "../components/PersonCard";
 
-const PersonList = ({ employees }) => {
+const PersonList = ({ employees, setEmployees }) => {
+  const handleUpdate = (updatedEmp) => {
+    setEmployees(prev =>
+      prev.map(emp => (emp.id === updatedEmp.id ? updatedEmp : emp))
+    );
+  };
+
   return (
     <>
       <h1>All employee details</h1>
@@ -9,6 +15,7 @@ const PersonList = ({ employees }) => {
           <PersonCard
             key={person.id}
             {...person}
+            onUpdateEmployee={handleUpdate} // 🧠 Pass function
           />
         ))}
       </div>
@@ -17,3 +24,4 @@ const PersonList = ({ employees }) => {
 };
 
 export default PersonList;
+

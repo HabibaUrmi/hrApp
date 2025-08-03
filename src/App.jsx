@@ -35,7 +35,7 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <PersonList employees={employees} />,
+          element: <PersonList employees={employees} setEmployees={setEmployees} />
         },
         {
           path: "/add",

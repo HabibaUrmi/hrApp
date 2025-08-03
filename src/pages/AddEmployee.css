@@ -1,0 +1,90 @@
+.add-employee-container {
+  background-color: #f9fafb;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 50px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.add-employee-container h2 {
+  text-align: center;
+  color: #111827;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.add-employee-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-employee-container input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-employee-container input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  outline: none;
+}
+
+.add-employee-container button[type="submit"] {
+  background-color: #4f46e5;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.add-employee-container button[type="submit"]:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+}
+
+.add-employee-container button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Optional: Subtle input placeholder color */
+.add-employee-container input::placeholder {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .add-employee-container {
+    padding: 24px;
+    margin: 24px;
+  }
+
+  .add-employee-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .add-employee-container input {
+    font-size: 0.95rem;
+  }
+
+  .add-employee-container button {
+    font-size: 0.95rem;
+  }
+  .add-employee-container input[type="date"] {
+    color: #111827; /* Tailwind's neutral-900: very dark gray, almost black */
+  }
+}
