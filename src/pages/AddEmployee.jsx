@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./AddEmployee.css";
 
 const AddEmployee = ({ onAddEmployee }) => {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ const AddEmployee = ({ onAddEmployee }) => {
   };
 
   return (
-    <div>
+    <div className="add-employee-container">
       <h2>Add New Employee</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -81,13 +82,15 @@ const AddEmployee = ({ onAddEmployee }) => {
           value={formData.animal}
           onChange={handleChange}
         />
+        
         <input
           type="date"
           name="startDate"
-          placeholder="Start Date"
+          id="startDate"
           value={formData.startDate}
           onChange={handleChange}
         />
+
         <input
           type="text"
           name="location"
@@ -105,7 +108,7 @@ const AddEmployee = ({ onAddEmployee }) => {
         <input
           type="text"
           name="skills"
-          placeholder="Skills (comma separated)"
+          placeholder="Skills"
           value={formData.skills}
           onChange={handleChange}
         />
